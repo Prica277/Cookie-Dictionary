@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "cookie-dictionary"
+version = "0.1.0"
+description = ""
+authors = ["Prica277 <prica277@hsd.k12.or.us>"]
+readme = "README.md"
+packages = [{include = "cookie_dictionary"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pytest = "^7.4.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
