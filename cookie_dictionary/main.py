@@ -23,8 +23,8 @@ def main():
         choice = utilities.get_menu_choice(new_menu, options)
         if choice == "1":
             # opens up the main cookie dictionary to search from.
-            #pick_recipe()
-            print("\nWe're working hard to bring this function up and running! Why not try another function?")
+            pick_recipe()
+            # print("\nWe're working hard to bring this function up and running! Why not try another function?")
         elif choice == "2":
             # opens a new file that allows the user to pick the recipe and then 
             # change the amount desired. It would then adjust the ingredient amounts accordingly.
@@ -34,6 +34,37 @@ def main():
             print("\nWe're still hammering out the bugs in this function. Why not try another function?")
     if choice == "4":
         print("\nGoodbye!")
+
+def pick_recipe():
+    """opens up the main cookie dictionary to search from."""
+    
+    print("\nHere's all the recipies you currently have to pick from: ")
+    for cookie in cookie_dictionary.cookie_dictionary.keys():
+        print("\n" + cookie)
+    
+    # gets the user's input and converts it into the style that the dictionary is named so that the code can find it.
+    user_cookie = input("Enter the cookie type you're looking for! Be sure to spell it correctly: ")
+    user_cookie = user_cookie.lower()
+    user_recipe = ""
+    for i in range(len(user_cookie)):
+        if user_cookie[i] == " ":
+            user_recipe = user_recipe + "_"
+        else:
+            user_recipe = user_recipe + user_cookie[i]
+    print("You chose " + user_recipe + ". Is this right?")
+    cont = input("Y/N: ")
+    cont = cont.upper()
+    if cont == "N":
+        #loops through the entire process again and returns to this check.
+        pick_recipe()
+    elif cont == "Y": 
+        print("Hooray!")
+        #continues to the next step.
+        for i in list(cookie_dictionary.cookie_dictionary.get(user_recipe)):
+            print(i)
+    else:
+        print("Sorry, you've encountered an error. Please try again.")
+        pick_recipe()
 
 if __name__ == "__main__":
     main()
