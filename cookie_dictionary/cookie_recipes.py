@@ -4,7 +4,7 @@ Author: Alex Price
 Description: A set of dictionaries to be temporarily stored and placed properly into the code at a later time. 
 All of the dictionaries will be nested into one massive dictionary called cookie_dictionary so that the code can work properly.
 """
-cookie_dictionary = {
+recipes = {
     "chocolate_chip": {
         "prep_time": "5 minutes",
         "cook_time": "12 minutes",

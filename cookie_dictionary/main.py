@@ -5,7 +5,7 @@ Description: The bulk of the code running to make the project work.
 """
 import utilities
 import json
-import cookie_dictionary
+from cookie_recipes import recipes
 
 def main():
     # Create a menu of choices upon starting the program
@@ -39,7 +39,7 @@ def pick_recipe():
     """opens up the main cookie dictionary to search from."""
     
     print("\nHere's all the recipies you currently have to pick from: ")
-    for cookie in cookie_dictionary.cookie_dictionary.keys():
+    for cookie in recipes.keys():
         print("\n" + cookie)
     
     # gets the user's input and converts it into the style that the dictionary is named so that the code can find it.
@@ -60,11 +60,16 @@ def pick_recipe():
     elif cont == "Y": 
         print("Hooray!")
         #continues to the next step.
-        for i in list(cookie_dictionary.cookie_dictionary.get(user_recipe)):
-            print(i)
+        display_recipe(user_recipe, recipes)
     else:
         print("Sorry, you've encountered an error. Please try again.")
         pick_recipe()
+
+def display_recipe(user_recipe, recipes):
+    recipe = recipes.get(user_recipe)
+    if recipe:
+        for key, value in recipe.items():
+            print(key + ": " + value)
 
 if __name__ == "__main__":
     main()
